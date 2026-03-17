@@ -1,10 +1,10 @@
 # AIgen_Image_Detection_Via_DL
-# Image forensics using deep-learning based image reconstruction and pattern detection #
+## Image forensics using deep-learning based image reconstruction and pattern detection ##
 
 
 Preliminary Pipeline:
 
-# Data Source: FIDD
+### Data Source: FIDD
 
 Contains real images and fake images generated from the following GAN/Diffusion models:
 
@@ -15,7 +15,7 @@ VAE → smooth texture fields
 Base encoder: Self-supervised MAE. 
 We will use the pretrained MAE backbone from "facebook/vit-mae-base". This model will be trained on the real images data from FIDD.
 
-# Experiment 1: Unsupervised Anomaly Detection
+### Experiment 1: Unsupervised Anomaly Detection
 
 Objective: Detect AI-gen images via per-patch reconstruction error
 
@@ -43,7 +43,7 @@ Visualization:
 
 Patch-wise reconstruction error heatmaps
 
-# Experiment 2: CLS Token Classifier
+### Experiment 2: CLS Token Classifier
 
 Objective: Supervised learning for classifying real vs fake using learned features.
 
@@ -76,7 +76,7 @@ Visualization:
 
 Patch-wise reconstruction error heatmaps
 
-# Experiment 3: Variance-based Classifier
+### Experiment 3: Variance-based Classifier
 
 Objective: Detect AI-generated images using statistical patterns across patch embeddings
 
@@ -109,7 +109,7 @@ Precision
 Recall
 F1 Score
 
-# Experiment 3.5(Multi-class version of 3): Generator Attribution
+### Experiment 3.5(Multi-class version of 3): Generator Attribution
 
 Objective: Classify each fake image as being the product of one of the following generative models.(Will start with the 3 included in FIDD, can test performance on images from unseen models later):
 
@@ -128,7 +128,7 @@ Macro F1
 Confusion Matrix
 
 
-# Tabulated Summary:
+### Tabulated Summary:
 
 | Experiment | Method               | Type         | Key Strength              |
 | ---------- | -------------------- | ------------ | ------------------------- |
@@ -143,20 +143,20 @@ ROC-AUC(Not useful for multiclass 3.5)
 F1 Score
 Accuracy
 
-# Addtional Feature for V1.01: DANN-GAN(Pytorch) trained on COCO to generate GAN fake imageset
+### Addtional Feature for V1.01: DANN-GAN(Pytorch) trained on COCO to generate GAN fake imageset
 
 The Architecture Breakdown
-The Generator (G): This is your "artist." It takes a latent noise vector (or a source image) and produces a synthetic image attempting to mimic the target distribution.
+The Generator (G): Takes a latent noise vector (or a source image) and produces a synthetic image attempting to mimic the target distribution.
 
-The Discriminator (D): This is the "art critic." It examines an image and asks: "Is this a real photo or a computer-generated one?" This component provides the standard adversarial GAN loss.
+The Discriminator (D): Examines an image and provides the standard adversarial GAN loss.
 
-The Domain Classifier (D domain): This is the "detective." It looks at the internal feature representations and asks: "Do these features look like they originated from the COCO dataset or from the Generator's synthetic distribution?"
+The Domain Classifier (D domain): Looks at the internal feature representations and performs domain classification.
 
-The Gradient Reversal Layer (GRL): This is the "double agent" sitting between the Generator and the Domain Classifier.
+The Gradient Reversal Layer (GRL): Maximizes gradient of the backward loop of Domain Classifier to eventually make model domain invariant.
 
-Forward Pass: It acts as an identity transform, passing features to the classifier.
-
-Backward Pass: It multiplies the gradients by −λ, effectively forcing the Generator to learn features that are indistinguishable between domains (Domain-Invariant).
+### GRL Operational Logic
+* **Forward Pass:** * It acts as an identity transform, passing features to the classifier.
+* **Backward Pass:** * It multiplies the gradients by $-\lambda$, effectively forcing the Generator to learn features that are indistinguishable between domains (Domain-Invariant).
 
 # Report Model Performance Comparisons in Report
 
