@@ -143,6 +143,21 @@ ROC-AUC(Not useful for multiclass 3.5)
 F1 Score
 Accuracy
 
+# Addtional Feature for V1.01: DANN-GAN(Pytorch) trained on COCO to generate GAN fake imageset
+
+The Architecture Breakdown
+The Generator (G): This is your "artist." It takes a latent noise vector (or a source image) and produces a synthetic image attempting to mimic the target distribution.
+
+The Discriminator (D): This is the "art critic." It examines an image and asks: "Is this a real photo or a computer-generated one?" This component provides the standard adversarial GAN loss.
+
+The Domain Classifier (D domain): This is the "detective." It looks at the internal feature representations and asks: "Do these features look like they originated from the COCO dataset or from the Generator's synthetic distribution?"
+
+The Gradient Reversal Layer (GRL): This is the "double agent" sitting between the Generator and the Domain Classifier.
+
+Forward Pass: It acts as an identity transform, passing features to the classifier.
+
+Backward Pass: It multiplies the gradients by −λ, effectively forcing the Generator to learn features that are indistinguishable between domains (Domain-Invariant).
+
 # Report Model Performance Comparisons in Report
 
 
