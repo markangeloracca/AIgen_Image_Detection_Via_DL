@@ -143,20 +143,26 @@ ROC-AUC(Not useful for multiclass 3.5)
 F1 Score
 Accuracy
 
-### Addtional Feature for V1.01: DANN-GAN(Pytorch) trained on COCO to generate GAN fake imageset
+### Addtional Feature for V1.01: GAN(Pytorch) trained on COCO to generate GAN fake imageset with DANN later to domain-proof trained Descriminator
 
 The Architecture Breakdown
+
+### Step 1. GAN Generator & Descriminator:
+
 The Generator (G): Takes a latent noise vector (or a source image) and produces a synthetic image attempting to mimic the target distribution.
 
 The Discriminator (D): Examines an image and provides the standard adversarial GAN loss.
+
+Save the best performing D model.
+
+### Step 2. DANN domain-proofing Descriminator:
+
+The Discriminator (D): Best performing Descriminator loaded from GAN model, tunes against two separate sources of fake images.
 
 The Domain Classifier (D domain): Looks at the internal feature representations and performs domain classification.
 
 The Gradient Reversal Layer (GRL): Maximizes gradient of the backward loop of Domain Classifier to eventually make model domain invariant.
 
-### GRL Operational Logic
-* **Forward Pass:** * It acts as an identity transform, passing features to the classifier.
-* **Backward Pass:** * It multiplies the gradients by $-\lambda$, effectively forcing the Generator to learn features that are indistinguishable between domains (Domain-Invariant).
 
 # Report Model Performance Comparisons in Report
 
