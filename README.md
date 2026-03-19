@@ -62,7 +62,6 @@ prediction
 Variables:
 
 Frozen encoder
-Fine-tuned encoder (optional)
 
 Performance Metrics:
 
