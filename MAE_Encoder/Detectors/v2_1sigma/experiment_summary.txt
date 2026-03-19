@@ -1,0 +1,10 @@
+MAE UNSUPERVISED DETECTION SUMMARY
+================================
+Calibration Mu:  0.294263
+Calibration Std: 0.161746
+Final Threshold: 0.456009
+Test Accuracy:   0.5810
+Test F1-Score:   0.4391
+Test AUC:        0.5706
+Test Precision:  0.6640
+Test Recall:     0.3280
