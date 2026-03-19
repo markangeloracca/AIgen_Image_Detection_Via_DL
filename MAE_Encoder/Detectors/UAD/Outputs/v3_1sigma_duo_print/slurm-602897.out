@@ -1,0 +1,34 @@
+Using CUDA
+--- [val] Dataset Loaded ---
+Total: 600 | Real: 600 | Fake: 0
+--- [test] Dataset Loaded ---
+Total: 1000 | Real: 500 | Fake: 500
+--- Starting Calibration on 600 Real Images ---
+Calibration Done. Threshold (1-sigma): 0.463132
+--- Evaluating 1000 Mixed Images ---
+
+=============================================
+      DETECTION PERFORMANCE SUMMARY
+=============================================
+Accuracy:  0.5810
+Precision: 0.6833
+Recall:    0.3020
+F1-Score:  0.4189
+ROC AUC:   0.5768
+
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+        Real       0.55      0.86      0.67       500
+        Fake       0.68      0.30      0.42       500
+
+    accuracy                           0.58      1000
+   macro avg       0.62      0.58      0.55      1000
+weighted avg       0.62      0.58      0.55      1000
+
+--- [test] Dataset Loaded ---
+Total: 1000 | Real: 500 | Fake: 500
+--- Generating 5 Real and 5 Fake Heatmaps ---
+Comparison heatmaps saved in 'heatmaps/'
+Distribution plot saved as error_distribution.png
+Experiment summary saved to experiment_summary.txt
