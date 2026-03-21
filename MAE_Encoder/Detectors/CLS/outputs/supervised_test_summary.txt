@@ -1,0 +1,14 @@
+MAE SUPERVISED CLASSIFICATION SUMMARY
+=====================================
+Best Val Accuracy: 88.32%
+Final Val Loss:    0.3061
+
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+        Real       0.87      0.81      0.84       500
+        Fake       0.88      0.92      0.90       750
+
+    accuracy                           0.87      1250
+   macro avg       0.87      0.86      0.87      1250
+weighted avg       0.87      0.87      0.87      1250
