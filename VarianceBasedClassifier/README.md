@@ -10,7 +10,7 @@ Detect AI-generated images using statistical patterns across patch embeddings
 - Pretrained MAE encoder ↓
 - patch embeddings (N × D) ↓
 - compute variance across patches ↓
-- variance vector (size D) ↓
+- variance & mean (size D\*2) ↓
 - classifier ↓
 - prediction
 

@@ -209,4 +209,5 @@ __marimo__/
 Dataset/
 DS_Store
 *.pt
+*.safetensors
 *.zip
